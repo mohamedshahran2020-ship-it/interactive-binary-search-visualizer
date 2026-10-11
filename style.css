@@ -1,0 +1,354 @@
+/* ==============================
+   GENERAL PAGE DESIGN
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px 16px;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #101827, #172554, #312e81);
+    color: #f8fafc;
+}
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(15, 23, 42, 0.94);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ==============================
+   HEADINGS
+============================== */
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: clamp(27px, 4vw, 38px);
+    color: #93c5fd;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* ==============================
+   INPUT CONTROLS
+============================== */
+
+.controls {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+input {
+    width: 100%;
+    padding: 13px 15px;
+    color: #f8fafc;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.25);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+#startBtn {
+    background: #2563eb;
+    color: white;
+}
+
+#nextBtn {
+    background: #059669;
+    color: white;
+}
+
+#resetBtn {
+    background: #475569;
+    color: white;
+}
+
+/* ==============================
+   ARRAY VISUALIZATION
+============================== */
+
+#arrayContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    min-height: 90px;
+    margin: 20px 0;
+    padding: 20px 12px;
+    background: rgba(30, 41, 59, 0.65);
+    border: 1px solid #334155;
+    border-radius: 15px;
+}
+
+.array-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 58px;
+    height: 58px;
+    padding: 8px;
+    background: #334155;
+    color: white;
+    border: 2px solid #64748b;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    animation: appear 0.35s ease both;
+    transition:
+        background 0.3s,
+        border-color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+/* Current search range */
+
+.array-box.active {
+    background: #1d4ed8;
+    border-color: #60a5fa;
+}
+
+/* Middle element */
+
+.array-box.mid {
+    background: #d97706;
+    border-color: #fbbf24;
+    color: white;
+    transform: scale(1.12);
+    box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+    z-index: 1;
+}
+
+/* Found element */
+
+.array-box.found {
+    background: #059669;
+    border-color: #6ee7b7;
+    color: white;
+    transform: scale(1.12);
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.45);
+}
+
+/* ==============================
+   STATUS MESSAGE
+============================== */
+
+#status {
+    min-height: 55px;
+    margin: 20px 0;
+    padding: 16px;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    color: #e2e8f0;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+#status.success {
+    color: #a7f3d0;
+    background: rgba(5, 150, 105, 0.15);
+    border-color: #059669;
+}
+
+#status.error {
+    color: #fecaca;
+    background: rgba(220, 38, 38, 0.12);
+    border-color: #dc2626;
+}
+
+#status.info {
+    color: #bfdbfe;
+    background: rgba(37, 99, 235, 0.12);
+    border-color: #2563eb;
+}
+
+/* ==============================
+   LOW / MID / HIGH INFORMATION
+============================== */
+
+.pointer-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.pointer-card {
+    padding: 18px;
+    text-align: center;
+    background: #1e293b;
+    border: 1px solid #475569;
+    border-radius: 12px;
+}
+
+.pointer-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.pointer-card strong {
+    color: #93c5fd;
+    font-size: 26px;
+}
+
+/* ==============================
+   COMPLEXITY INFORMATION
+============================== */
+
+.complexity {
+    margin-top: 28px;
+    padding: 22px;
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid #334155;
+    border-radius: 15px;
+}
+
+.complexity h2 {
+    margin-top: 0;
+    color: #93c5fd;
+    font-size: 21px;
+}
+
+.complexity p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* ==============================
+   ANIMATIONS
+============================== */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 650px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    .container {
+        padding: 20px 14px;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .pointer-info {
+        gap: 8px;
+    }
+
+    .pointer-card {
+        padding: 12px 5px;
+    }
+
+    .pointer-card strong {
+        font-size: 21px;
+    }
+
+    .array-box {
+        min-width: 48px;
+        height: 48px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Binary Search Visualizer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Binary Search Visualizer</h1>
+        <p>Learn Binary Search through interactive visualization</p>
+    </header>
+
+    <main class="container">
+
+        <section class="controls">
+            <h2>Search Controls</h2>
+
+            <label for="arrayInput">Enter numbers:</label>
+
+            <input
+                type="text"
+                id="arrayInput"
+                value="5, 12, 18, 23, 31, 42, 57, 68, 75"
+                placeholder="Enter numbers separated by commas"
+            >
+
+            <label for="targetInput">Target number:</label>
+
+            <input
+                type="number"
+                id="targetInput"
+                value="42"
+                placeholder="Enter target"
+            >
+
+            <div class="buttons">
+                <button id="startBtn">Start Search</button>
+                <button id="nextBtn">Next Step</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </section>
+
+        <section class="visualization">
+            <h2>Array Visualization</h2>
+
+            <div id="arrayContainer"></div>
+
+            <div class="legend">
+                <span>LOW = Starting index</span>
+                <span>MID = Middle index</span>
+                <span>HIGH = Ending index</span>
+            </div>
+        </section>
+
+        <section class="result">
+            <h2>Search Progress</h2>
+
+            <p id="status">Enter a target and click Start Search.</p>
+
+            <div class="details">
+                <p>LOW: <strong id="lowValue">-</strong></p>
+                <p>MID: <strong id="midValue">-</strong></p>
+                <p>HIGH: <strong id="highValue">-</strong></p>
+            </div>
+        </section>
+
+        <section class="complexity">
+            <h2>Algorithm Complexity</h2>
+
+            <p><strong>Best Case:</strong> O(1)</p>
+            <p><strong>Average Case:</strong> O(log n)</p>
+            <p><strong>Worst Case:</strong> O(log n)</p>
+            <p><strong>Space Complexity:</strong> O(1) for iterative search</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>DSA Pedagogy Activity | Interactive Binary Search Visualizer</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
